@@ -1,3 +1,4 @@
+#include <conio.h>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -34,6 +35,7 @@ int main()
         cin >> x1 >> y1;
         cout << "Second Cell: ";
         cin >> x2 >> y2;
+
         if((x1 != x2 || y1 != y2) && Board[x1][y1].present && Board[x2][y2].present && Board[x1][y1].pokemon == Board[x2][y2].pokemon && checkMatch({x1, y1}, {x2, y2}, Board))
         {
             clearConsole();
@@ -51,12 +53,12 @@ int main()
                 return 1;
             }
 
-            if(!stillHaveLegitMove(Board))
+            while(!stillHaveLegitMove(Board))
                 initBoard(Board, pokemonFreq);
 
             cout << "\n\nLife left: " << life << endl;
         }
-        else
+        else if(Board[x1][y1].pokemon != Board[x2][y2].pokemon || !checkMatch({x1, y1}, {x2, y2}, Board))
         {
             clearConsole();
             life--;

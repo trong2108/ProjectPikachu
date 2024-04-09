@@ -1,4 +1,3 @@
-#include <conio.h>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -8,6 +7,7 @@
 #include <cstdlib>
 #include <chrono>
 #include <thread>
+#include <conio.h>
 
 using namespace std;
 
@@ -36,10 +36,14 @@ int main()
         cout << "Second Cell: ";
         cin >> x2 >> y2;
 
-        if((x1 != x2 || y1 != y2) && Board[x1][y1].present && Board[x2][y2].present && Board[x1][y1].pokemon == Board[x2][y2].pokemon && checkMatch({x1, y1}, {x2, y2}, Board))
-        {
-            clearConsole();
+        if(x1 == x2 && y1 == y2)
+            continue;
 
+        if(!Board[x1][y1].present || !Board[x2][y2].present)
+            continue;
+
+        if(Board[x1][y1].pokemon == Board[x2][y2].pokemon && checkMatch({x1, y1}, {x2, y2}, Board))
+        {
             Board[x1][y1].present = 0;
             Board[x2][y2].present = 0;
             pokemonFreq[Board[x1][y1].pokemon - 'A'] -= 2;
@@ -58,9 +62,8 @@ int main()
 
             cout << "\n\nLife left: " << life << endl;
         }
-        else if(Board[x1][y1].pokemon != Board[x2][y2].pokemon || !checkMatch({x1, y1}, {x2, y2}, Board))
+        else
         {
-            clearConsole();
             life--;
             printBoard(Board);
             cout << "\n\nLife left: " << life << endl;

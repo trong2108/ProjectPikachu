@@ -44,6 +44,8 @@ int main()
 
         if(Board[x1][y1].pokemon == Board[x2][y2].pokemon && checkMatch({x1, y1}, {x2, y2}, Board))
         {
+            clearConsole();
+            
             Board[x1][y1].present = 0;
             Board[x2][y2].present = 0;
             pokemonFreq[Board[x1][y1].pokemon - 'A'] -= 2;
@@ -64,6 +66,8 @@ int main()
         }
         else
         {
+            clearConsole();
+            
             life--;
             printBoard(Board);
             cout << "\n\nLife left: " << life << endl;

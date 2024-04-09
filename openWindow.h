@@ -107,7 +107,7 @@ void appear(SHORT posX, SHORT posY)
 //)";
 //    putchar(box);
 //}
-void printBox(short x, short y) // 6 4
+void printBox(short x, short y)
 {
     appear(x, y);
     putchar(218);
@@ -129,17 +129,19 @@ void printBox(short x, short y) // 6 4
 }
 void printBoard(Cell** Board,short x, short y)
 {
-
+    int temp = x;
     for (int i = 0; i < ROW; i++)
     {
         for (int j = 0; j < COL; j++)
-        {
-            printBox(x, y);
-            appear(x + 2, y + 1);
-            cout << Board[i][j].pokemon;
-            x += 5;
-        }
-        x = 1;
+            if (Board[i][j].present == 1)
+            {
+                printBox(x, y);
+                appear(x + 2, y + 1);
+                putchar(Board[i][j].pokemon);
+                x += 6;
+            }
+
+        x = temp;;
         y += 3;
 
     }

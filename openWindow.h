@@ -1,9 +1,3 @@
-#pragma once
-#include "board.h"
-//#include "openWindow.h"
-
-#include <Windows.h>
-using namespace std;
 void setWindowSize(SHORT width, SHORT height)
 {
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -15,6 +9,7 @@ void setWindowSize(SHORT width, SHORT height)
 
     SetConsoleWindowInfo(hStdout, 1, &gamePikachu);
 }
+
 void SetScreenBufferSize(SHORT width, SHORT height)
 {
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -25,53 +20,55 @@ void SetScreenBufferSize(SHORT width, SHORT height)
 
     SetConsoleScreenBufferSize(hStdout, NewSize);
 }
-LONG SetWindowLong(
+
+LONG SetWindowLong
+(
    HWND hWnd,
    int nIndex,
    LONG dwNewLong
 );
+
 void DisableResizeWindow()
 {
     HWND hWnd = GetConsoleWindow();
     SetWindowLong(hWnd, GWL_STYLE, GetWindowLong(hWnd, GWL_STYLE) & ~WS_SIZEBOX);
 }
-BOOL DeleteMenu(
+
+BOOL DeleteMenu
+(
   HMENU hMenu,
   UINT  uPosition,
   UINT  uFlags
 );
+
 void DisableCtrButton(bool Close, bool Min, bool Max)
 {
     HWND hWnd = GetConsoleWindow();
     HMENU hMenu = GetSystemMenu(hWnd, false);
 
     if (Close == 1)
-    {
         DeleteMenu(hMenu, SC_CLOSE, MF_BYCOMMAND);
-    }
+
     if (Min == 1)
-    {
         DeleteMenu(hMenu, SC_MINIMIZE, MF_BYCOMMAND);
-    }
+
     if (Max == 1)
-    {
         DeleteMenu(hMenu, SC_MAXIMIZE, MF_BYCOMMAND);
-    }
 }
-BOOL ShowScrollBar(
+
+BOOL ShowScrollBar
+(
   HWND hWnd,
   int  wBar,
   BOOL bShow
 );
+
 void ShowScrollbar(BOOL Show)
 {
     HWND hWnd = GetConsoleWindow();
     ShowScrollBar(hWnd, SB_BOTH, Show);
 }
-BOOL WINAPI SetConsoleTextAttribute(
-  _In_ HANDLE hConsoleOutput,
-  _In_ WORD   wAttributes
-);
+
 void SetColor(int backgound_color, int text_color)
 {
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -79,10 +76,7 @@ void SetColor(int backgound_color, int text_color)
     int color_code = backgound_color * 16 + text_color;
     SetConsoleTextAttribute(hStdout, color_code);
 }
-BOOL WINAPI SetConsoleCursorPosition(
-  _In_ HANDLE hConsoleOutput,
-  _In_ COORD  dwCursorPosition
-);
+
 void appear(SHORT posX, SHORT posY)
 {
 	HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -92,21 +86,7 @@ void appear(SHORT posX, SHORT posY)
 
 	SetConsoleCursorPosition(hStdout, Position);
 }
-//BOOL WINAPI SetConsoleTitle(
-//  _In_ LPCTSTR lpConsoleTitle
-//);
 
-//void printBox()
-//{
-//    unsigned char box = R"(
-//_____
-//|   |
-//|   |
-//|   |
-//_____
-//)";
-//    putchar(box);
-//}
 void printBox(short x, short y)
 {
     appear(x, y);
@@ -127,24 +107,25 @@ void printBox(short x, short y)
         putchar(196);
     putchar(217);
 }
-void printBoard(Cell** Board,short x, short y)
+
+void printBoard(Cell Board[][COL], short x = 1, short y = 0)
 {
     int temp = x;
     for (int i = 0; i < ROW; i++)
     {
         for (int j = 0; j < COL; j++)
+        {
             if (Board[i][j].present == 1)
             {
                 printBox(x, y);
                 appear(x + 2, y + 1);
                 putchar(Board[i][j].pokemon);
-                x += 6;
             }
-
+            x += 6;
+        }
         x = temp;;
         y += 3;
 
     }
     cout << endl;
 }
-

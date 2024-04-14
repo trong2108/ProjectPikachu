@@ -108,7 +108,7 @@ void printBox(short x, short y)
     putchar(217);
 }
 
-void printBoard(Cell** Board, short x = 1, short y = 0)
+void printBoard(Cell Board[][COL], short x = 1, short y = 0)
 {
     int temp = x;
     for (int i = 0; i < ROW; i++)
@@ -129,16 +129,24 @@ void printBoard(Cell** Board, short x = 1, short y = 0)
     }
     cout << endl;
 }
-
-void clearConsole() {
-    COORD topLeft = {0, 0};
-    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-    CONSOLE_SCREEN_BUFFER_INFO screen;
-    DWORD written;
-
-    GetConsoleScreenBufferInfo(consoleHandle, &screen);
-    FillConsoleOutputCharacterA(consoleHandle, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written);
-    FillConsoleOutputAttribute(consoleHandle, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE, screen.dwSize.X * screen.dwSize.Y, topLeft, &written);
-    SetConsoleCursorPosition(consoleHandle, topLeft);
+void selectbox(short x, short y)
+{
+    appear(x, y);
+    SetColor(5,15);
+    putchar(218);
+    for(int i = 0; i < 3; i++)
+        putchar(196);
+    putchar(191);
+    for (int i = 0; i < 1; i ++)
+    {
+        appear(x, y + 1 +i);
+        putchar(179);
+        appear(x + 4, y + 1 +i);
+        putchar(179);
+    }
+    appear(x, y + 2);
+    putchar(192);
+    for(int i = 0; i < 3; i++)
+        putchar(196);
+    putchar(217);
 }
-

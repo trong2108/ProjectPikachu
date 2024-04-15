@@ -119,9 +119,32 @@ void printBox(short x, short y)
         putchar(196);
     putchar(217);
 }
-
-void printBoard(Cell** Board, short x = 0, short y = 0)
+void selectbox(short x, short y, short background_color, short text_color)
 {
+    appear(x, y);
+    SetColor(background_color, text_color);
+    putchar(218);
+    for(int i = 0; i < 3; i++)
+        putchar(196);
+    putchar(191);
+    for (int i = 1; i < 2; i ++)
+    {
+        appear(x, y + i);
+        putchar(179);
+        appear(x + 4, y + i);
+        putchar(179);
+    }
+    appear(x, y + 2);
+    putchar(192);
+    for(int i = 0; i < 3; i++)
+        putchar(196);
+    putchar(217);
+    SetColor(0,15);
+}
+void printBoard(Cell** Board)
+{
+    short x = 0;
+    short y = 0;
     int temp = x;
     for (int i = 0; i < ROW; i++)
     {
@@ -141,57 +164,37 @@ void printBoard(Cell** Board, short x = 0, short y = 0)
     }
     cout << endl;
 }
-
-void selectbox(short x, short y, short background_color, short text_color)
+void printPurple(Cell_index Cell_A)
 {
-    appear(x, y);
-    SetColor(background_color, text_color);
-    putchar(218);
-    for(int i = 0; i < 3; i++)
-        putchar(196);
-    putchar(191);
-    for (int i = 0; i < 1; i ++)
-    {
-        appear(x, y + 1 +i);
-        putchar(179);
-        appear(x + 4, y + 1 +i);
-        putchar(179);
-    }
-    appear(x, y + 2);
-    putchar(192);
-    for(int i = 0; i < 3; i++)
-        putchar(196);
-    putchar(217);
-}
-
-void printBoard(Cell** Board, Cell_index Cell_A, short y = 0, short x = 0)
-{
-    printBoard(Board);
+    short x = 0;
+    short y = 0;
     selectbox(y + Cell_A.y * 6, x + Cell_A.x * 3, 5, 15);
-    SetColor(0,15);
 }
-
-void printBoard(Cell** Board, Cell_index Cell_A, Cell_index Cell_B, short y = 0, short x = 0)
+void printBlack(Cell_index Cell_A)
 {
-    printBoard(Board, Cell_A);
-    selectbox(y + Cell_B.y * 6, x + Cell_B.x * 3, 6, 15);
-    SetColor(0,15);
+    short x = 0;
+    short y = 0;
+    selectbox(y + Cell_A.y * 6, x + Cell_A.x * 3, 0, 15);
 }
-
-void printBoard(Cell** Board, Cell_index Cell_A, Cell_index Cell_B, Cell_index Cell_C, string mode = "normal", short y = 0, short x = 0)
+void printYellow(Cell_index Cell_B)
 {
-    if(mode == "normal")
-    {
-        printBoard(Board, Cell_A, Cell_B);
-        selectbox(y + Cell_C.y * 6, x + Cell_C.x * 3, 6, 15);
-        SetColor(0,15);
-    }
-    else if(mode == "right")
-    {
+    short x = 0;
+    short y = 0;
+    selectbox(y + Cell_A.y * 6, x + Cell_A.x * 3, 6, 15);
 
-    }
-    else if(mode == "wrong")
-    {
+}
+void printRed(Cell_index Cell_B, Cell_index Cell_C)
+{
+    short x = 0;
+    short y = 0;
+    selectbox(y + Cell_C.y * 6, x + Cell_C.x * 3, 4, 15);
+    selectbox(y + Cell_B.y * 6, x + Cell_B.x * 3, 4, 15);
 
-    }
+}
+void printGree(Cell_index Cell_B, Cell_index Cell_C)
+{
+    short x = 0;
+    short y = 0;
+    selectbox(y + Cell_C.y * 6, x + Cell_C.x * 3, 2, 15);
+    selectbox(y + Cell_B.y * 6, x + Cell_B.x * 3, 2, 15);
 }

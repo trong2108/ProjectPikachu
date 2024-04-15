@@ -17,7 +17,7 @@ using namespace std;
 
 #include "Board.h"
 #include "Matching.h"
-#include "openWindow.h"
+#include "OpenWindow.h"
 #include "User.h"
 #include "KeyboardMove.h"
 #include "Gameplay.h"

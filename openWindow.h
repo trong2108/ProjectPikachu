@@ -108,7 +108,7 @@ void printBox(short x, short y)
     putchar(217);
 }
 
-void printBoard(Cell** Board, short x = 1, short y = 0)
+void printBoard(Cell** Board, short x, short y)
 {
     int temp = x;
     for (int i = 0; i < ROW; i++)
@@ -152,7 +152,7 @@ void selectbox(short x, short y, short background_color, short text_color)
 }
 void printBoard(Cell** Board, Cell_index Cell_A, short y, short x) // y = 1, x = 0 testing
 {
-    printBoard(Board,x,y);
+    printBoard(Board,y,x);
     selectbox(y + Cell_A.y * 6, x + Cell_A.x * 3, 5, 15);
 
 }
@@ -164,7 +164,7 @@ void printBoard(Cell** Board, Cell_index Cell_A, Cell_index Cell_B, short y, sho
 }
 void printBoard(Cell** Board, Cell_index Cell_A, Cell_index Cell_B, Cell_index Cell_C, short y, short x)
 {
-    printBoard(Board, Cell_A, Cell_B, y, x);
+    printBoard(Board, Cell_A, Cell_B, x, y);
     selectbox(y + Cell_C.y * 6, x + Cell_C.x * 3, 6, 15);
 
 }

@@ -1,15 +1,3 @@
-void clearConsole() {
-    COORD topLeft = {0, 0};
-    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
-    CONSOLE_SCREEN_BUFFER_INFO screen;
-    DWORD written;
-
-    GetConsoleScreenBufferInfo(console, &screen);
-    FillConsoleOutputCharacterA(console, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written);
-    FillConsoleOutputAttribute(console, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE, screen.dwSize.X * screen.dwSize.Y, topLeft, &written);
-    SetConsoleCursorPosition(console, topLeft);
-}
-
 void setWindowSize(SHORT width, SHORT height)
 {
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -88,7 +76,12 @@ void SetColor(int backgound_color, int text_color)
     int color_code = backgound_color * 16 + text_color;
     SetConsoleTextAttribute(hStdout, color_code);
 }
-
+void settingWindow()
+{
+    setWindowSize(98,49);
+    SetScreenBufferSize(98,49);
+    DisableCtrButton(0,0,1);
+}
 void appear(SHORT posX, SHORT posY)
 {
 	HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -141,6 +134,61 @@ void selectbox(short x, short y, short background_color, short text_color)
     putchar(217);
     SetColor(0,15);
 }
+//void printBoard(Cell** Board, short x, short y)
+//{
+//    int temp = x;
+//    for (int i = 0; i < ROW; i++)
+//    {
+//        for (int j = 0; j < COL; j++)
+//        {
+//            if (Board[i][j].present == 1)
+//            {
+//                printBox(x, y);
+//                appear(x + 2, y + 1);
+//                putchar(Board[i][j].pokemon);
+//            }
+//            x += 6;
+//        }
+//        x = temp;;
+//        y += 3;
+//
+//    }
+//    cout << endl;
+//}
+
+//void printBoard(Cell** Board, Cell_index Cell_A, short y, short x)
+//{
+//    printBoard(Board,y,x);
+//    selectbox(y + Cell_A.y * 6, x + Cell_A.x * 3, 5, 15);
+//    SetColor(0,15);
+//}
+//void printBoard(Cell** Board, Cell_index Cell_A, Cell_index Cell_B, short y , short x)
+//{
+//    printBoard(Board, Cell_A, y, x);
+//    selectbox(y + Cell_B.y * 6, x + Cell_B.x * 3, 5, 15);
+//    SetColor(0,15);
+//}
+//void printBoard(Cell** Board, Cell_index Cell_A, Cell_index Cell_B, Cell_index Cell_C, short y, short x, string mode = "normal")
+//{
+//    if(mode == "normal")
+//    {
+//        printBoard(Board, Cell_A, Cell_B, y, x);
+//        selectbox(y + Cell_C.y * 6, x + Cell_C.x * 3, 6, 15);
+//        SetColor(0,15);
+//    }
+//    else if(mode == "right")
+//    {
+//        selectbox(y + Cell_C.y * 6, x + Cell_C.x * 3, 2, 15);
+//        selectbox(y + Cell_B.y * 6, x + Cell_B.x * 3, 2, 15);
+//        SetColor(0,15);
+//    }
+//    else if(mode == "wrong")
+//    {
+//        selectbox(y + Cell_C.y * 6, x + Cell_C.x * 3, 4, 15);
+//        selectbox(y + Cell_B.y * 6, x + Cell_B.x * 3, 4, 15);
+//        SetColor(0,15);
+//    }
+//}
 void printBoard(Cell** Board)
 {
     short x = 0;

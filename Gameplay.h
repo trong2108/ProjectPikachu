@@ -160,6 +160,8 @@ int gameLoop_new()
                         initBoard(Board, pokemonFreq);
                 }
 
+                clearConsole();
+                printBoard(Board);
                 printPurple(Board, currentCell);
             }
             else
@@ -195,5 +197,6 @@ int gameLoop_new()
     }
     return 0;
 }
+
 
 

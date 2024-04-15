@@ -158,10 +158,11 @@ int gameLoop_new()
                     initBoard(Board, pokemonFreq);
                     while(!stillHaveLegitMove(Board))
                         initBoard(Board, pokemonFreq);
+
+                    clearConsole();
+                    printBoard(Board);
                 }
 
-                clearConsole();
-                printBoard(Board);
                 printPurple(Board, currentCell);
             }
             else

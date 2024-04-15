@@ -154,17 +154,17 @@ void printBoard(Cell** Board, Cell_index Cell_A, short y, short x)
 {
     printBoard(Board,y,x);
     selectbox(y + Cell_A.y * 6, x + Cell_A.x * 3, 5, 15);
-
+    SetColor(0,15);
 }
 void printBoard(Cell** Board, Cell_index Cell_A, Cell_index Cell_B, short y, short x)
 {
     printBoard(Board, Cell_A, y, x);
     selectbox(y + Cell_B.y * 6, x + Cell_B.x * 3, 6, 15);
-
+    SetColor(0,15);
 }
 void printBoard(Cell** Board, Cell_index Cell_A, Cell_index Cell_B, Cell_index Cell_C, short y, short x)
 {
     printBoard(Board, Cell_A, Cell_B, y, x);
     selectbox(y + Cell_C.y * 6, x + Cell_C.x * 3, 6, 15);
-
+    SetColor(0,15);
 }

@@ -1,6 +1,3 @@
-#pragma comment(lib, "winmm.lib")
-#define WINVER 0x0500
-
 #include <iostream>
 #include <fstream>
 #include <string>

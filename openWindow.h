@@ -228,7 +228,7 @@ void printYellow(Cell_index Cell_B)
 {
     short x = 0;
     short y = 0;
-    selectbox(y + Cell_A.y * 6, x + Cell_A.x * 3, 6, 15);
+    selectbox(y + Cell_B.y * 6, x + Cell_B.x * 3, 6, 15);
 
 }
 void printRed(Cell_index Cell_B, Cell_index Cell_C)
@@ -239,7 +239,7 @@ void printRed(Cell_index Cell_B, Cell_index Cell_C)
     selectbox(y + Cell_B.y * 6, x + Cell_B.x * 3, 4, 15);
 
 }
-void printGree(Cell_index Cell_B, Cell_index Cell_C)
+void printGreen(Cell_index Cell_B, Cell_index Cell_C)
 {
     short x = 0;
     short y = 0;

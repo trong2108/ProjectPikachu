@@ -273,9 +273,9 @@ void printPlayerInfo(string name, int life, int point)
         putchar(196);
     putchar(217);
     int line = 1;
-    appear(coordinateX + 5, coordinateY + line++);
+    appear(coordinateX + 5 + 15, coordinateY + line++);
     SetColor(0,15);
-    cout << "PLAYER INFORMATION";
+    cout << "PLAYER INFORMATION:";
     appear(coordinateX + 1, coordinateY + line++);
     SetColor(15,4);
     for (int i = 0; i <length; i ++)
@@ -345,7 +345,7 @@ void printStageInfo(string gameMode, int highestPoint)
     putchar(217);
 
     int line = 1;
-    appear(coordinateX + 12, coordinateY + line++);
+    appear(coordinateX + 27, coordinateY + line++);
     SetColor(15,2);
     cout << "GG!";
     appear(coordinateX + 1, coordinateY + line++);
@@ -354,7 +354,7 @@ void printStageInfo(string gameMode, int highestPoint)
         cout <<"-";
     SetColor(0, 6);
 
-    appear(coordinateX + 5, coordinateY + line++);
+    appear(coordinateX + 20, coordinateY + line++);
     cout << "PIKACHU TUTORIAL:";
     SetColor(0, 15);
     appear(coordinateX + 3, coordinateY + line++);
@@ -370,6 +370,7 @@ void printStageInfo(string gameMode, int highestPoint)
 
     SetColor(0,15);
 }
+
 
 
 

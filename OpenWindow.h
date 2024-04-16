@@ -243,6 +243,136 @@ void printGreen(Cell_index Cell_B)
     printBGwithBox(y + Cell_B.y * 6, x + Cell_B.x * 3, 2, 15);
 }
 
+//#define coordinateX
+//#define coordinateY
+#define length 55
+void printPlayerInfo(string name, int life, int point)
+{
+    short x = 0;
+    short y = 0;
+//    short length = 25;
+    short width = 7;
+    short coordinateX = x + 8*6 + 5;
+    short coordinateY = y;
+    appear(coordinateX, coordinateY);
+    SetColor(0, 3);
+    putchar(218);
+    for(int i = 0; i < length; i++)
+        putchar(196);
+    putchar(191);
+    for (int i = 1; i < width; i ++)
+    {
+        appear(coordinateX, coordinateY + i);
+        putchar(179);
+        appear(coordinateX + length + 1, coordinateY + i);
+        putchar(179);
+    }
+    appear(coordinateX, coordinateY + width);
+    putchar(192);
+    for(int i = 0; i < length; i++)
+        putchar(196);
+    putchar(217);
+    int line = 1;
+    appear(coordinateX + 5, coordinateY + line++);
+    SetColor(0,15);
+    cout << "PLAYER INFORMATION";
+    appear(coordinateX + 1, coordinateY + line++);
+    SetColor(15,4);
+    for (int i = 0; i <length; i ++)
+        cout <<"-";
+    SetColor(0, 6);
+    appear(coordinateX + 3, coordinateY + line++);
+    cout << "Player : ";
+    SetColor(0,13); cout << name;
+
+    SetColor(0, 6);
+    appear(coordinateX + 3, coordinateY + line++);
+    cout << "Life left : ";
+    SetColor(0,3); cout << life;
+
+    SetColor(0, 6);
+    appear(coordinateX + 3, coordinateY + line++);
+    cout << "point : ";
+    SetColor(0,2);; cout << point;
+    SetColor(0,15);
+}
+void updateLife(int life)
+{
+    short x = 0;
+    short y = 0;
+    short coordinateX = x + 8*6 + 5;
+    short coordinateY = y;
+    appear(coordinateX + 3 + 12, coordinateY + 4);
+    SetColor(0,3);
+    if(life == 1)
+        SetColor(0,4);
+    cout << life;
+}
+void updatePoint(int point)
+{
+    short x = 0;
+    short y = 0;
+    short coordinateX = x + 8*6 + 5;
+    short coordinateY = y;
+    appear(coordinateX + 3 + 8, coordinateY + 5);
+    SetColor(0,2);
+    cout << point;
+}
+void printStageInfo(string gameMode, int highestPoint)
+{
+    short x = 0;
+    short y = 0;
+    short coordinateX = x + 8*6 + 5;
+    short coordinateY = y + 10;
+    short width = 10;
+    appear(coordinateX, coordinateY);
+    SetColor(0, 3);
+    putchar(218);
+    for(int i = 0; i < length; i++)
+        putchar(196);
+    putchar(191);
+    for (int i = 1; i < width; i ++)
+    {
+        appear(coordinateX, coordinateY + i);
+        putchar(179);
+        appear(coordinateX + length + 1, coordinateY + i);
+        putchar(179);
+    }
+    appear(coordinateX, coordinateY + width);
+    putchar(192);
+    for(int i = 0; i < length; i++)
+        putchar(196);
+    putchar(217);
+
+    int line = 1;
+    appear(coordinateX + 12, coordinateY + line++);
+    SetColor(15,2);
+    cout << "GG!";
+    appear(coordinateX + 1, coordinateY + line++);
+    SetColor(15,4);
+    for (int i = 0; i <length; i ++)
+        cout <<"-";
+    SetColor(0, 6);
+
+    appear(coordinateX + 5, coordinateY + line++);
+    cout << "PIKACHU TUTORIAL:";
+    SetColor(0, 15);
+    appear(coordinateX + 3, coordinateY + line++);
+    cout << "Use WASD/Arrow Key to Move";
+    appear(coordinateX + 3, coordinateY + line++);
+    cout << "Press Enter/Space to Choose or Unchoose";
+    appear(coordinateX + 3, coordinateY + line++);
+    cout << "Press 'H' Key for Move Suggestion (-20 Points)";
+    appear(coordinateX + 3, coordinateY + line++);
+    cout << "Press 'R' Key to Reshuffle Game Board (-50 Points)";
+    appear(coordinateX + 3, coordinateY + line++);
+    cout << "Press ESC to Exit ";
+
+    SetColor(0,15);
+}
+
+
+
 
 
 

@@ -1,3 +1,6 @@
+#define COORD_X 3
+#define COORD_Y 2
+
 void clearConsole() {
     COORD topLeft = {0, 0};
     HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -49,7 +52,7 @@ void printBox(short x, short y)
     putchar(217);
 }
 
-void printBoard(Cell** Board, short x = 0, short y = 0)
+void printBoard(Cell** Board, short x = COORD_X, short y = COORD_Y)
 {
     int temp = x;
     for (int i = 0; i < ROW; i++)
@@ -71,10 +74,10 @@ void printBoard(Cell** Board, short x = 0, short y = 0)
     cout << endl;
 }
 
-void deleteCell(Cell_index Cell_B, short x = 0, short y = 0)
+void deleteCell(Cell_index Cell_B, short x = COORD_X, short y = COORD_Y)
 {
-    short posY = x + Cell_B.x * 3;
-    short posX = y + Cell_B.y * 6;
+    short posY = y + Cell_B.x * 3;
+    short posX = x + Cell_B.y * 6;
     for(int i = 0; i < 3; i++)
     {
         appear(posX, posY + i);
@@ -107,54 +110,41 @@ void printColor(short x, short y, short background_color, short text_color)
     SetColor(0,15);
 }
 
-void printPurple(Cell_index Cell_A)
+void printPurple(Cell_index Cell_A, short x = COORD_X, short y = COORD_Y)
 {
-    short x = 0;
-    short y = 0;
-    printColor(y + Cell_A.y * 6, x + Cell_A.x * 3, 5, 15);
+    printColor(x + Cell_A.y * 6, y + Cell_A.x * 3, 5, 15);
 }
 
-void printBlack(Cell_index Cell_A)
+void printBlack(Cell_index Cell_A, short x = COORD_X, short y = COORD_Y)
 {
-    short x = 0;
-    short y = 0;
-    printColor(y + Cell_A.y * 6, x + Cell_A.x * 3, 0, 15);
+    printColor(x + Cell_A.y * 6, y + Cell_A.x * 3, 0, 15);
 }
 
-void printYellow(Cell_index Cell_B)
+void printYellow(Cell_index Cell_B, short x = COORD_X, short y = COORD_Y)
 {
-    short x = 0;
-    short y = 0;
-    printColor(y + Cell_B.y * 6, x + Cell_B.x * 3, 6, 15);
+    printColor(x + Cell_B.y * 6, y + Cell_B.x * 3, 6, 15);
 }
 
-void printRed(Cell_index Cell_B)
+void printRed(Cell_index Cell_B, short x = COORD_X, short y = COORD_Y)
 {
-    short x = 0;
-    short y = 0;
-    printColor(y + Cell_B.y * 6, x + Cell_B.x * 3, 4, 15);
+    printColor(x + Cell_B.y * 6, y + Cell_B.x * 3, 4, 15);
 }
 
-void printBlue(Cell_index Cell_B)
+void printBlue(Cell_index Cell_B, short x = COORD_X, short y = COORD_Y)
 {
-    short x = 0;
-    short y = 0;
-    printColor(y + Cell_B.y * 6, x + Cell_B.x * 3, 9, 15);
+    printColor(x + Cell_B.y * 6, y + Cell_B.x * 3, 9, 15);
 }
 
-void printGreen(Cell_index Cell_B)
+void printGreen(Cell_index Cell_B, short x = COORD_X, short y = COORD_Y)
 {
-    short x = 0;
-    short y = 0;
-    printColor(y + Cell_B.y * 6, x + Cell_B.x * 3, 2, 15);
+    printColor(x + Cell_B.y * 6, y + Cell_B.x * 3, 2, 15);
 }
 
 void printPlayerInfo(string name, int life, int point, int hightestPoint)
 {
     int length = 55;
-    short x = 0;
-    short y = 0;
-//    short length = 25;
+    short x = 4;
+    short y = 3;
     short width = 7;
     short coordinateX = x + 8*6 + 5;
     short coordinateY = y;
@@ -209,8 +199,8 @@ void printPlayerInfo(string name, int life, int point, int hightestPoint)
 
 void updateLife(int life)
 {
-    short x = 0;
-    short y = 0;
+    short x = 4;
+    short y = 3;
     short coordinateX = x + 8 * 6 + 5;
     short coordinateY = y;
     appear(coordinateX + 3 + 12, coordinateY + 4);
@@ -222,8 +212,8 @@ void updateLife(int life)
 
 void updatePoint(int point)
 {
-    short x = 0;
-    short y = 0;
+    short x = 4;
+    short y = 3;
     short coordinateX = x + 8*6 + 5;
     short coordinateY = y;
     appear(coordinateX + 3 + 8, coordinateY + 5);
@@ -234,8 +224,8 @@ void updatePoint(int point)
 void printTutorial()
 {
     int length = 55;
-    short x = 0;
-    short y = 0;
+    short x = 4;
+    short y = 4;
     short coordinateX = x + 8*6 + 5;
     short coordinateY = y + 10;
     short width = 10;
@@ -285,11 +275,6 @@ void printTutorial()
     cout << "Press ESC to Exit ";
 
     SetColor(0,15);
-}
-
-void printBG(Cell_index Cell_A);
-{
-
 }
 
 

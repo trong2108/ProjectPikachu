@@ -41,7 +41,7 @@ void printAsciiArt() {
 }
 void printBG(Cell_index Cell_A, short x = COORD_X, short y = COORD_Y)
 {
-const string asciiArt[24] = {
+const string BackGround[24] = {
     R"(xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx)",
     R"(x     _  _     ___   __  __   _   _    ___    x)",
     R"(x    | || |   / __| |  \/  | | | | |  / __|   x)",
@@ -72,12 +72,10 @@ const string asciiArt[24] = {
         for(int j = 0; j < 6; j++)
         {
             appear(6 * Cell_A.y + x + j, 3 * Cell_A.x + y + i);
-            cout << asciiArt[ 3 * Cell_A.x + i][6 * Cell_A.y + j];
+            cout << BackGround[ 3 * Cell_A.x + i][6 * Cell_A.y + j];
         }
 
 }
-
-
 void printBoard(Cell** Board, short x = COORD_X, short y = COORD_Y)
 {
     int temp = x;

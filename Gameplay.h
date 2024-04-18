@@ -100,7 +100,7 @@ int gameLoop(string username, int highestPoint)
 
     //String life and point
     int life = 3;
-    int point = 300;
+    int point = 0;
 
     //The number of cell have been chosen
     int chosenCellCount = 0;
@@ -288,6 +288,8 @@ int gameLoop(string username, int highestPoint)
             //Move the current cell away from the blank space
             currentCell.moveRight(Board);
             currentCell.moveLeft(Board);
+	    currentCell.moveUp(Board);
+            currentCell.moveDown(Board);
 
             //If the board have no legit move left, shuffle it
             if(!stillHaveLegitMove(Board))
